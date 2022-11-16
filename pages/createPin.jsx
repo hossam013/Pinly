@@ -58,7 +58,7 @@ const CreatePin = () => {
       router.push("/login");
     }
 
-    if (user && title && about && destination && imageAsset?._id && category) {
+    if (user && title && about && imageAsset?._id && category) {
       const document = {
         _type: "pin",
         title,

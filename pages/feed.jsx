@@ -16,8 +16,6 @@ const Feed = () => {
 
   let handleSearch = ({ target }) => {
     setSearchTerm(target.value);
-    console.log(pins);
-    pins.filter((pin) => {});
   };
 
   useEffect(() => {
@@ -46,7 +44,7 @@ const Feed = () => {
         setLoading(false);
       });
     }
-  }, [categoryId, searchTerm]);
+  }, []);
 
   if (loading)
     return <Spinner message="We are adding new ideas to your feed!" />;

@@ -18,7 +18,7 @@ const PinDetailWithId = () => {
   } = useRouter();
   let router = useRouter();
   const [pins, setPins] = useState(null);
-  const [pinDetail, setPinDetail] = useState(null);
+  const [pinDetail, setPinDetail] = useState();
   const [comment, setComment] = useState("");
   const [addingComment, setAddingComment] = useState(false);
 
@@ -52,21 +52,6 @@ const PinDetailWithId = () => {
     }
   };
 
-  const fetchPinDetails = () => {
-    let query = pinDetailQuery(pinID);
-    if (query) {
-      client.fetch(query).then((pinData) => {
-        setPinDetail(pinData[0]);
-
-        if (pinData[0]) {
-          query = pinDetailMorePinQuery(pinData[0]);
-
-          client.fetch(query).then((response) => setPins(response));
-        }
-      });
-    }
-  };
-
   // const handleDeleteComment = (comment) => {
   //   console.log(comment._key);
   //   let comments = [...pinDetail?.comments];
@@ -84,15 +69,32 @@ const PinDetailWithId = () => {
   // };
 
   useEffect(() => {
+    const fetchPinDetails = async () => {
+      let query = pinDetailQuery(pinID);
+      if (query) {
+        await client.fetch(query).then((pinData) => {
+          if (pinData[0]) setPinDetail(pinData[0]);
+
+          if (pinData[0]) {
+            query = pinDetailMorePinQuery(pinData[0]);
+
+            client.fetch(query).then((response) => setPins(response));
+          }
+        });
+      }
+    };
+
     fetchPinDetails();
-  }, [pinID, pinDetail]);
+  }, [pinID]);
 
   let handleImageUrl = () => {
     let url = pinDetail?.image && urlFor(pinDetail?.image).url();
     return url;
   };
 
-  if (!pinDetail) return <Spinner message="Loading pin..." />;
+  if (!pinDetail) {
+    return <Spinner message="Loading pin..." />;
+  }
 
   return (
     <>

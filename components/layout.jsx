@@ -22,7 +22,7 @@ const LatOut = ({ children }) => {
     client.fetch(quary).then((data) => {
       setUser(data[0]);
     });
-  });
+  }, []);
 
   return (
     <>

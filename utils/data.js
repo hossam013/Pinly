@@ -133,7 +133,7 @@ export const pinDetailQuery = (pinId) => {
 };
 
 export const pinDetailMorePinQuery = (pin) => {
-  const query = `*[_type == "pin" && category == '${pin.category}' && _id != '${pin._id}' ]{
+  const query = `*[_type == "pin" && category == '${pin?.category}' && _id != '${pin?._id}' ]{
     image{
       asset->{
         url

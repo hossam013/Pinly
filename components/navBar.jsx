@@ -6,7 +6,7 @@ const NavBar = ({ searchTerm, setSearchTerm, user }) => {
   let { asPath } = useRouter();
 
   let handleSearch = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   if (!user) return;

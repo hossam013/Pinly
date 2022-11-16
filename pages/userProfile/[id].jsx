@@ -29,17 +29,17 @@ const UserProfileWithId = () => {
   const [activeBtn, setActiveBtn] = useState("created");
 
   useEffect(() => {
-    let query = userQuery(userProfileId);
+    let QueryForUser = userQuery(userProfileId);
 
     client
-      .fetch(query)
+      .fetch(QueryForUser)
       .then((data) => {
         setUser(data[0]);
       })
       .catch((ex) => {
         console.error(ex);
       });
-  }, [userProfileId, user]);
+  }, [userProfileId]);
 
   useEffect(() => {
     if (text === "Created") {
@@ -55,7 +55,7 @@ const UserProfileWithId = () => {
         setPins(data);
       });
     }
-  }, [userProfileId, user]);
+  }, []);
 
   if (!user) return <Spinner message="Loading profile" />;
 

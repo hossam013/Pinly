@@ -63,7 +63,6 @@ const Pin = ({ pin }) => {
         }}
         className="relative cursor-zoom-in w-auto hover:shadow-lg rounded-lg overflow-hidden transition-all duration-500 ease-in-out"
       >
-        {console.log(pin?.image?.asset?.url)}
         <img
           // src={urlFor(pin?.image?.asset?.url).width(250)?.url()}
           src={pin?.image?.asset?.url}
