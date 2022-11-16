@@ -88,6 +88,15 @@ const UserProfileWithId = () => {
             ) : (
               ""
             )}
+            {userProfileId === process.env.NEXT_PUBLIC_WAGHA_SECRET_ID ? (
+              <div className="pb-7">
+                <h3 className="flex mb-3 gap-2 p-2 items-center bg-white rounded-full shadow-lg mx-3 text-2xl">
+                  الواجهه
+                </h3>
+              </div>
+            ) : (
+              ""
+            )}
             <div className="absolute top-0 z-1 right-0 p-2">
               {userProfileId === currentUser?._id && <SignOut />}
             </div>

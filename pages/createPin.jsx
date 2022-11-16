@@ -86,15 +86,15 @@ const CreatePin = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mt-5 lg:h-4/5">
+    <div className="flex md:flex-col justify-center items-center mt-5 lg:h-4/5">
       <ProtectedLink />
       {fields && (
         <p className="text-red-500 mb-5 text-xl transition-all duration-150 ease-in">
           Please add all fields.
         </p>
       )}
-      <div className="flex  justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5 w-full">
-        <div className="bg-secondaryColor p-3 flex w-full">
+      <div className="flex flex-col md:flex-row justify-center items-center bg-white lg:p-5 p-3 lg:w-4/5 w-full">
+        <div className="bg-secondaryColor p-3 flex w-full min-w-fit">
           <div className="flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-3 w-full h-370">
             {loading && <Spinner />}
             {wrongImageType && <p>Wrong Image Type</p>}

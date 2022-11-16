@@ -81,7 +81,7 @@ const Feed = () => {
       }
       {!pins?.length ? (
         <div className="flex flex-col items-center justify center mt-40">
-          <h1 className="flex items-center justify center font-bold text-4xl">
+          <h1 className="flex items-center justify center font-bold md:text-4xl">
             No pins available with this category, you can create one!
           </h1>
           <Link href="/createPin">
