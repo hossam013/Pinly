@@ -65,7 +65,7 @@ const Feed = () => {
               className="p-2 w-full bg-white outline-none"
             />
             <button
-              className="bg-black text-white rounded-md md:py-1 md:px-1"
+              className="bg-black text-white rounded-md px-2 md:py-1 md:px-3"
               onClick={(e) => handleSearchConfirm(e)}
             >
               Submit
