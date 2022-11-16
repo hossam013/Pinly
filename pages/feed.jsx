@@ -63,7 +63,6 @@ const Feed = () => {
               placeholder="Search"
               value={searchValue}
               className="p-2 w-full bg-white outline-none"
-              autoFocus
             />
             <button
               className="bg-black text-white rounded-md md:py-1 md:px-1"
