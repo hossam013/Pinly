@@ -55,7 +55,7 @@ const UserProfileWithId = () => {
         setPins(data);
       });
     }
-  }, []);
+  }, [text, userProfileId]);
 
   if (!user) return <Spinner message="Loading profile" />;
 
