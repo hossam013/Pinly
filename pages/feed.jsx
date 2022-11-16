@@ -8,14 +8,27 @@ import Link from "next/link";
 import { IoMdAdd, IoMdSearch } from "react-icons/io";
 
 const Feed = () => {
-  const [searchTerm, setSearchTerm] = useState();
+  const [searchValue, setSearchValue] = useState();
   const [loading, setLoading] = useState(false);
   const [pins, setPins] = useState(null);
   const { query } = useRouter();
   const { id: categoryId } = query;
 
   let handleSearch = ({ target }) => {
-    setSearchTerm(target.value);
+    setSearchValue(target.value);
+  };
+
+  let handleSearchConfirm = () => {
+    if (searchValue) {
+      setLoading(true);
+
+      const query = searchQuery(searchValue.toLowerCase());
+
+      client.fetch(query).then((data) => {
+        setPins(data);
+        setLoading(false);
+      });
+    }
   };
 
   useEffect(() => {
@@ -33,18 +46,7 @@ const Feed = () => {
         setLoading(false);
       });
     }
-
-    if (searchTerm) {
-      setLoading(true);
-
-      const query = searchQuery(searchTerm.toLowerCase());
-
-      client.fetch(query).then((data) => {
-        setPins(data);
-        setLoading(false);
-      });
-    }
-  }, []);
+  }, [categoryId, searchValue === ""]);
 
   if (loading)
     return <Spinner message="We are adding new ideas to your feed!" />;
@@ -59,15 +61,21 @@ const Feed = () => {
               type="text"
               onChange={(e) => handleSearch(e)}
               placeholder="Search"
-              value={searchTerm}
+              value={searchValue}
               className="p-2 w-full bg-white outline-none"
               autoFocus
             />
+            <button
+              className="bg-black text-white rounded-md md:py-1 md:px-1"
+              onClick={(e) => handleSearchConfirm(e)}
+            >
+              Submit
+            </button>
           </div>
           <div className="flex gap-3">
             <Link href="/createPin">
               <div
-                className="bg-hhh text-white gap-1 rounded-full mr-2 w-12 h-10 md:w-14 md:h-12 flex justify-center items-center cursor-pointer"
+                className="bg-hhh text-white gap-1 rounded-full mr-2 flex justify-center items-center cursor-pointer"
                 style={{ width: "115px", height: "40px" }}
               >
                 <IoMdAdd />
