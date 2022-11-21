@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import Masonry from "react-masonry-css";
 import Pin from "../pages/pin/index";
 
@@ -8,14 +7,14 @@ const breakpointObj = {
   2000: 5,
   1200: 3,
   1000: 2,
-  500: 1,
+  // 500: 1,
 };
 
 const MansoryLayout = ({ pins }) => {
   return (
     <Masonry className="flex animate-slide-fwd" breakpointCols={breakpointObj}>
       {pins?.map((pin) => (
-        <Pin key={pin._id} pin={pin} className="w-max" />
+        <Pin key={pin._id} pin={pin} />
       ))}
     </Masonry>
   );

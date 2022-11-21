@@ -159,6 +159,7 @@ const PinDetailWithId = () => {
                   <Link href={`/userProfile/${comment?.postedBy?._id}`}>
                     <img
                       src={comment?.postedBy?.image}
+                      referrerPolicy="no-referrer"
                       alt="user Profile"
                       className="w-8 h-8 rounded-full object-cover mt-1"
                     />

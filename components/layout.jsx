@@ -2,27 +2,28 @@ import Head from "next/head";
 import Link from "next/link";
 import SideBar from "./../components/sideBar";
 import { HiMenu } from "react-icons/hi";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { userQuary } from "./../utils/data";
 import { client } from "../pages/api/auth/client";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { handleImage } from "../utils/handleUserImage";
 import { fetchingUser } from "../utils/fetchingUser";
+import { useSession } from "next-auth/react";
 
 const LatOut = ({ children }) => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
+  const userInfo = fetchingUser();
+  let session = useSession();
+  let currentUser = session?.data?.user;
 
   useEffect(() => {
-    const userInfo = fetchingUser();
-
     const quary = userQuary(userInfo?._id);
 
     client.fetch(quary).then((data) => {
       setUser(data[0]);
     });
-  }, []);
+  }, [currentUser]);
 
   return (
     <>
@@ -37,7 +38,7 @@ const LatOut = ({ children }) => {
       </Head>
       <div className="body flex bg-gray-50 md:flex-row flex-col h-screen transaction-height duration-75 ease-out">
         <div className="hidden md:flex h-screen flex-initial">
-          <SideBar user={user && user} closeToggle={setToggleSidebar} />
+          <SideBar closeToggle={setToggleSidebar} />
         </div>
         <div className="flex md:hidden flex-row">
           <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
@@ -67,7 +68,7 @@ const LatOut = ({ children }) => {
                   onClick={() => setToggleSidebar(false)}
                 />
               </div>
-              <SideBar user={user && user} closeToggle={setToggleSidebar} />
+              <SideBar closeToggle={setToggleSidebar} />
             </div>
           )}
         </div>

@@ -3,16 +3,27 @@ import { RiHomeFill } from "react-icons/ri";
 import { categories } from "../utils/data";
 import ActiveLink from "./ActiveLink";
 import { handleImage } from "../utils/handleUserImage";
+import { fetchingUser } from "../utils/fetchingUser";
+import { useState, useEffect } from "react";
 
 const isNotActiveStyle =
   "flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize";
 const isActiveStyle =
   "flex items-center px-5 gap-3 font-extrabold border-r-2 border-51 transition-all duration-200 ease-in-out capitalize shadow-md";
 
-const SideBar = ({ user, closeToggle }) => {
+const SideBar = (props) => {
+  let { closeToggle } = props;
+  const [isHydrated, IsHydrated] = useState(false);
+  let userInfo = fetchingUser();
+
+  useEffect(() => {
+    IsHydrated(true);
+  });
+
   const handleCloseSidebar = () => {
     if (closeToggle) closeToggle(false);
   };
+
   return (
     <div className="hasScrollbar flex flex-col justify-between bg-white h-full min-w-240 overflow-y-scroll scrollbar-hide">
       <div className="flex flex-col">
@@ -66,9 +77,9 @@ const SideBar = ({ user, closeToggle }) => {
           </div>
         </div>
       </div>
-      {user ? (
+      {userInfo && isHydrated ? (
         <ActiveLink
-          href={`/userProfile/${user?._id}`}
+          href={`/userProfile/${userInfo?._id}`}
           activeClassName={isActiveStyle}
         >
           <div
@@ -77,11 +88,11 @@ const SideBar = ({ user, closeToggle }) => {
           >
             <img
               referrerPolicy="no-referrer"
-              src={handleImage(user)}
+              src={handleImage(userInfo)}
               alt="user-profile"
               className="w-10 h-10 rounded-full"
             />
-            <p>{user?.userName}</p>
+            <p>{userInfo?.name}</p>
           </div>
         </ActiveLink>
       ) : (

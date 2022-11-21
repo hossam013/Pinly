@@ -107,7 +107,7 @@ const Pin = ({ pin }) => {
               )}
             </div>
             <div className="flex justify-between items-center gap-1 w-full">
-              {pin?.destination && (
+              {pin?.destination?.slice(8).length > 0 ? (
                 <a
                   href={pin?.destination}
                   target="_balnk"
@@ -118,9 +118,9 @@ const Pin = ({ pin }) => {
                   }}
                 >
                   <BsFillArrowUpRightCircleFill />
-                  {pin?.destination.slice(8)}
+                  {pin?.destination?.slice(8, 17)}...
                 </a>
-              )}
+              ) : undefined}
               {pin?.postedBy?._id === userInfo?._id && (
                 <button
                   type="button"

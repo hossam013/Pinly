@@ -20,6 +20,8 @@ const notActiveBtnStyles =
   "bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none";
 
 const UserProfileWithId = () => {
+  // let session = useSession();
+  // let currentUser1 = session?.data?.user;
   let { query } = useRouter(),
     { id: userProfileId } = query;
   let currentUser = fetchingUser();
@@ -34,7 +36,9 @@ const UserProfileWithId = () => {
     client
       .fetch(QueryForUser)
       .then((data) => {
-        setUser(data[0]);
+        if (data[0] !== undefined) {
+          setUser(data[0]);
+        }
       })
       .catch((ex) => {
         console.error(ex);
