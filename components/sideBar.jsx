@@ -31,9 +31,9 @@ const SideBar = (props) => {
           <img
             src="/logo.png"
             alt="logo"
-            className="w-36 ml-10 mt-1"
+            className="w-36 ml-10 mt-1 p-1"
             onClick={handleCloseSidebar}
-            style={{ width: "100px", height: "50px" }}
+            style={{ width: "100px", height: "70px" }}
           />
         </Link>
         <div className="flex flex-col ">
@@ -104,6 +104,7 @@ const SideBar = (props) => {
             </a>
           </Link>
         )}
+        {<div className="py-3"></div>}
       </div>
     </div>
   );
