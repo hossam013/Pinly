@@ -140,16 +140,16 @@ const Pin = ({ pin }) => {
       {pin?.postedBy ? (
         <Link
           href={`/userProfile/${pin?.postedBy?._id}`}
-          className="flex gap-2 mt-2 items-center"
+          className="flex gap-1 mt-2 items-center"
         >
-          <div className="flex items-center space-x-4 ml-1">
+          <div className="flex items-center space-x-2 ml-1">
             <img
               src={pin?.postedBy?.image}
               referrerPolicy="no-referrer"
-              className="w-8 h-8 rounded-full object-cover mt-1"
+              className="w-5 h-5 md:w-8 md:h-8 rounded-full object-cover mt-1 "
               alt="user-profile"
             />
-            <p className="font-semibold capitalize">
+            <p className="flex font-semibold capitalize md:text-base text-xs">
               {pin?.postedBy?.userName}
             </p>
           </div>
