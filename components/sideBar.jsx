@@ -76,35 +76,35 @@ const SideBar = (props) => {
             ))}
           </div>
         </div>
+        {userInfo && isHydrated ? (
+          <ActiveLink
+            href={`/userProfile/${userInfo?._id}`}
+            activeClassName={isActiveStyle}
+          >
+            <div
+              onClick={handleCloseSidebar}
+              className="flex my-1 mb-3 gap-2 p-2 mb-3 items-center bg-white rounded-full shadow-lg mx-3 font-bold cursor-pointer"
+            >
+              <img
+                referrerPolicy="no-referrer"
+                src={handleImage(userInfo)}
+                alt="user-profile"
+                className="w-10 h-10 rounded-full"
+              />
+              <p>{userInfo?.name}</p>
+            </div>
+          </ActiveLink>
+        ) : (
+          <Link href="/login">
+            <a
+              onClick={handleCloseSidebar}
+              className="flex justify-center items-center py-2 mt-2 bg-hhh rounded-full shadow-md text-xl font-bold text-white"
+            >
+              Login
+            </a>
+          </Link>
+        )}
       </div>
-      {userInfo && isHydrated ? (
-        <ActiveLink
-          href={`/userProfile/${userInfo?._id}`}
-          activeClassName={isActiveStyle}
-        >
-          <div
-            onClick={handleCloseSidebar}
-            className="flex my-1 mb-3 gap-2 p-2 mb-3 items-center bg-white rounded-full shadow-lg mx-3 font-bold cursor-pointer"
-          >
-            <img
-              referrerPolicy="no-referrer"
-              src={handleImage(userInfo)}
-              alt="user-profile"
-              className="w-10 h-10 rounded-full"
-            />
-            <p>{userInfo?.name}</p>
-          </div>
-        </ActiveLink>
-      ) : (
-        <Link href="/login">
-          <a
-            onClick={handleCloseSidebar}
-            className="flex justify-center items-center py-2 mt-2 bg-hhh rounded-full shadow-md text-xl font-bold text-white"
-          >
-            Login
-          </a>
-        </Link>
-      )}
     </div>
   );
 };
