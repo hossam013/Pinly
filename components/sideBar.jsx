@@ -104,7 +104,7 @@ const SideBar = (props) => {
             </a>
           </Link>
         )}
-        {<div className="py-3"></div>}
+        {<div className="py-5"></div>}
       </div>
     </div>
   );
