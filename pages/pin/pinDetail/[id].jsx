@@ -99,7 +99,7 @@ const PinDetailWithId = () => {
   return (
     <>
       <div
-        className="flex xl:flex-row flex-col m-auto bg-white"
+        className="flex xl:flex-row flex-col m-auto bg-white mt-2"
         style={{ maxWidth: "1500px", borderRadius: "32px" }}
       >
         <div className="flex justify-center items-center md:items-start flex-initial">

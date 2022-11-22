@@ -72,7 +72,7 @@ const LatOut = ({ children }) => {
             </div>
           )}
         </div>
-        <div className="hasScrollbar pb-2 flex-1 h-screen overflow-y-scroll ml-3 mt-3">
+        <div className="hasScrollbar pb-2 flex-1 h-screen overflow-y-scroll ml-3">
           <div>{children}</div>
         </div>
       </div>
