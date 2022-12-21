@@ -123,7 +123,7 @@ const PinDetailWithId = () => {
               </a>
             </div>
             <a href={pinDetail?.destination} target="_blacnk" rel="noreferrer">
-              {pinDetail?.destination.slice(8)}
+              {pinDetail?.destination?.slice(8)}
             </a>
           </div>
           <div className="flex flex-col items-canter align-center">
