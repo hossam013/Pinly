@@ -12,7 +12,7 @@ import ProtectedLink from "./../components/protectedLink";
 const CreatePin = () => {
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
-  const [destination, setDestination] = useState("");
+  // const [destination, setDestination] = useState("");
   const [loading, setLoading] = useState(false);
   const [fields, setFields] = useState(false);
   const [category, setCategory] = useState(null);
@@ -63,7 +63,6 @@ const CreatePin = () => {
         _type: "pin",
         title,
         about,
-        destination,
         image: {
           _type: "image",
           asset: {
@@ -161,13 +160,13 @@ const CreatePin = () => {
             placeholder="What is this pin about?"
             className="outline-none border-b-2 border-gray-200 p-2"
           />
-          <input
+          {/* <input
             type="text"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Add a distenation link"
             className="outline-none border-b-2 border-gray-200 p-2"
-          />
+          /> */}
           <div className="flex flex-col">
             <div>
               <p className="mb-2 font-semibold text:lg sm:text-xl">
